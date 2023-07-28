@@ -32,26 +32,22 @@ class _StartPageState extends State<StartPage> {
               child: Image.asset('images/iCodeGuyHead.png'),
             ),
             const SizedBox(
-              height: 50,
-              width: 500,
-              child: Center(
-                child: GradientText(text: 'Player name', size: 20),
-              )
-            ),
+                height: 50,
+                width: 500,
+                child: Center(
+                  child: GradientText(text: 'Player name', size: 20),
+                )),
             SizedBox(
-              height: 50,
-              width: 500,
-              child: Center(
-                child: InputField(onSubmitted: _createUser),
-              )
-            ),
+                height: 50,
+                width: 500,
+                child: Center(
+                  child: InputField(onSubmitted: _createUser),
+                )),
           ],
         ),
       ),
-
       floatingActionButton: const StartButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -70,15 +66,12 @@ class _StartPageState extends State<StartPage> {
           ],
         ),
       ),
-
     );
   }
 
-  void _createUser(String userName){
+  void _createUser(String userName) {
     setState(() {
       newUser.userName = userName;
     });
-
-
   }
 }
