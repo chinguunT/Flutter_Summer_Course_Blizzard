@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wordfind_app/Gradient_letter.dart';
 import 'package:wordfind_app/gradient_text.dart';
-import 'package:wordfind_app/player_name_input.dart';
+import 'package:wordfind_app/start_page.dart';
 
 class WelcomePage extends StatelessWidget{
   const WelcomePage({super.key});
