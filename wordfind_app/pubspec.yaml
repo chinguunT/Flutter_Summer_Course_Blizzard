@@ -66,7 +66,13 @@ flutter:
     - images/arrow_back.png
     - images/game_logo.png
     - images/iCodeGuyHead.png
-
+    - guessImages/orange1.png
+    - guessImages/idea1.png
+    - guessImages/letter.png
+    - guessImages/exit.png
+    - guessImages/win.png
+    - guessImages/previous1.png
+    - guessImages/previous2.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
