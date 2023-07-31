@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wordfind_app/User.dart';
+import 'package:wordfind_app/user.dart';
 import 'package:wordfind_app/gradient_text.dart';
 import 'package:wordfind_app/input_field.dart';
 import 'package:wordfind_app/start_button.dart';
