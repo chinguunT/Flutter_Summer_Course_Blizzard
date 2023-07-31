@@ -37,11 +37,11 @@ class _StartPageState extends State<StartPage> {
                 child: Center(
                   child: GradientText(text: 'Player name', size: 20),
                 )),
-            SizedBox(
+            const SizedBox(
                 height: 50,
                 width: 500,
                 child: Center(
-                  child: InputField(onSubmitted: _createUser),
+                  child: InputField(),
                 )),
           ],
         ),
