@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wordfind_app/guess_page.dart';
 
 class StartButton extends StatelessWidget {
   const StartButton({super.key});
@@ -20,7 +21,8 @@ class StartButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(25),
       ),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+        },
         style: ElevatedButton.styleFrom(backgroundColor: Colors.transparent, elevation: 0, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25))),
         child: const Text('Start', style: TextStyle(fontFamily: 'Nunito', fontWeight: FontWeight.w700, fontSize: 24),),
 

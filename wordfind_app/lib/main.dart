@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wordfind_app/guess_page.dart';
 import 'package:wordfind_app/start_page.dart';
+import 'package:wordfind_app/welcome_page.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -8,7 +9,7 @@ void main() {
     theme: ThemeData(fontFamily: 'Ribeye'),
     home: const Scaffold(
       body: Center(
-        child: StartPage(),
+        child: GuessPage(),
       ),
     ),
   )

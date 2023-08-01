@@ -37,7 +37,7 @@ class _StartPageState extends State<StartPage> {
                 child: Center(
                   child: GradientText(text: 'Player name', size: 20),
                 )),
-            const SizedBox(
+            SizedBox(
                 height: 50,
                 width: 500,
                 child: Center(
@@ -55,14 +55,14 @@ class _StartPageState extends State<StartPage> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(right: 100, bottom: 20),
+              padding: const EdgeInsets.only(right: 90, bottom: 20),
               child: Image.asset(
                 'images/arrow_back.png',
                 width: 32,
                 height: 32,
               ),
             ),
-            Image.asset('images/game_logo.png'),
+            /* Padding(padding: const EdgeInsets.only(right: 50), child: */ Image.asset('images/game_logo.png') // )
           ],
         ),
       ),

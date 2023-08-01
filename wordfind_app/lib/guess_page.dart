@@ -8,78 +8,47 @@ class GuessPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFFBF5F2),
-      body: Container(
-          decoration: const BoxDecoration(
-              image: DecorationImage(image: AssetImage('images/back2.png'))),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: 40,
-                    width: 390,
-                    child: Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(right: 5),
-                            child: Image.asset('guessImages/orange1.png'),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 5),
-                            child: Image.asset('guessImages/orange1.png'),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 5),
-                            child: Image.asset('guessImages/orange1.png'),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 5),
-                            child: Image.asset('guessImages/orange1.png'),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 5),
-                            child: Image.asset('guessImages/orange1.png'),
-                          ),
-                        ],
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Image.asset('images/arrow_back.png'),
+          onPressed: () {},
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
+        title: const Text(
+          'chinguun',
+          style: TextStyle(fontSize: 24, color: Color(0xFFE86B02)),
+        ),
+      ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+                child: Container(
+                  width: double.maxFinite,
+                  child: Center(
+                    child: Container(
+                      width: 150,
+                      decoration: BoxDecoration(
+                        gradient: const LinearGradient(
+                          colors: [
+                            Color(0xFFE86B02),
+                            Color(0xFFFA9541)
+                          ],
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(backgroundColor: Colors.transparent, elevation: 0, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25))),
+                        child: const Text('Reload', style: TextStyle(fontFamily: 'Nunito', fontSize: 24, fontWeight: FontWeight.w600),),
                       ),
                     ),
                   ),
-                ],
-              ),
-              const SizedBox(
-                height: 70,
-                width: 390,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [GradientText(text: '0/10', size: 25)],
-                ),
-              ),
-            ],
-          )),
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(right: 100),
-              child: Image.asset('guessImages/exit.png'),
-            ),
-            const Padding(
-              padding: EdgeInsets.only(right: 100),
-              child: GradientText(
-                text: 'Guest',
-                size: 20,
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [Image.asset('guessImages/win.png')],
+                )
             )
           ],
         ),

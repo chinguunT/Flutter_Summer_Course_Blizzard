@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wordfind_app/gradient_letter.dart';
 import 'package:wordfind_app/gradient_text.dart';
+import 'package:wordfind_app/start_page.dart';
 
 class WelcomePage extends StatelessWidget{
   const WelcomePage({super.key});
@@ -19,7 +20,7 @@ class WelcomePage extends StatelessWidget{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Padding(padding: EdgeInsets.only(top: 200)),
+            const Padding(padding: EdgeInsets.only(top: 100)),
             const Expanded(child: Column(
               children: [
                 Row(
@@ -57,7 +58,8 @@ class WelcomePage extends StatelessWidget{
           borderRadius: BorderRadius.circular(25),
         ),
         child: ElevatedButton(
-          onPressed: () {  },
+          onPressed: () {
+          },
           style: ElevatedButton.styleFrom(backgroundColor: Colors.transparent, elevation: 0, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25))),
           child: const Text('PLAY', style: TextStyle(fontFamily: 'Nunito', fontSize: 24, fontWeight: FontWeight.w700),),
         ),
