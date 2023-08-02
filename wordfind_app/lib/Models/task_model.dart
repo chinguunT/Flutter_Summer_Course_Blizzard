@@ -32,4 +32,8 @@ class TaskModel {
     }
     return false;
   }
+
+  TaskModel clone(){
+    return TaskModel(answer: answer, pathImage: pathImage, question: question);
+  }
 }

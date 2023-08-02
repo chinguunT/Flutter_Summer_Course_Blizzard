@@ -13,4 +13,9 @@ class CharModel{
       return correctValue;
     }
   }
+
+  void clearValue(){
+    currentIndex = null;
+    currentValue = null;
+  }
 }

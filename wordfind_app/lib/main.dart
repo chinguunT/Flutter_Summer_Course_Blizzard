@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:wordfind_app/guess_page.dart';
-import 'package:wordfind_app/start_page.dart';
 import 'package:wordfind_app/welcome_page.dart';
 
 void main() {
@@ -9,9 +7,8 @@ void main() {
     theme: ThemeData(fontFamily: 'Ribeye'),
     home: const Scaffold(
       body: Center(
-        child: GuessPage(),
+        child: WelcomePage(),
       ),
     ),
-  )
-  );
+  ));
 }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:wordfind_app/user.dart';
 import 'package:wordfind_app/gradient_text.dart';
 import 'package:wordfind_app/input_field.dart';
-import 'package:wordfind_app/start_button.dart';
+import 'package:wordfind_app/welcome_page.dart';
+
+import 'Models/user_model.dart';
+import 'guess_page.dart';
 
 User newUser = User('guest', 0);
 
@@ -41,31 +43,33 @@ class _StartPageState extends State<StartPage> {
                 height: 50,
                 width: 500,
                 child: Center(
-                  child: InputField(),
+                  child: InputField(
+                    onSubmitted: _createUser,
+                  ),
                 )),
           ],
         ),
       ),
-      floatingActionButton: const StartButton(),
+      floatingActionButton: StartButton(newUser),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(right: 90, bottom: 20),
-              child: Image.asset(
-                'images/arrow_back.png',
-                width: 32,
-                height: 32,
-              ),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          title: Padding(
+            padding: const EdgeInsets.only(left: 75),
+            child: Image.asset('images/game_logo.png'),
+          ),
+          leading: IconButton(
+            icon: Image.asset(
+              'images/arrow_back.png',
+              width: 32,
+              height: 32,
             ),
-            /* Padding(padding: const EdgeInsets.only(right: 50), child: */ Image.asset('images/game_logo.png') // )
-          ],
-        ),
-      ),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const WelcomePage()));
+            },
+          )),
     );
   }
 
@@ -73,5 +77,49 @@ class _StartPageState extends State<StartPage> {
     setState(() {
       newUser.userName = userName;
     });
+  }
+}
+
+class StartButton extends StatefulWidget {
+  const StartButton(User newUser, {super.key});
+  @override
+  State<StartButton> createState() => _StartButtonState();
+}
+
+class _StartButtonState extends State<StartButton> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 310,
+      height: 60,
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          colors: [Color(0xFFE86B02), Color(0xFFFA9541)],
+        ),
+        borderRadius: BorderRadius.circular(25),
+      ),
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => GuessPage(
+                        newUser,
+                      )));
+        },
+        style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25))),
+        child: const Text(
+          'Start',
+          style: TextStyle(
+              fontFamily: 'Nunito', fontWeight: FontWeight.w700, fontSize: 24),
+        ),
+      ),
+    );
   }
 }
