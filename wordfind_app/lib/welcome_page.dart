@@ -33,13 +33,13 @@ class WelcomePage extends StatelessWidget {
                       GradientLetter(letter: 'D')
                     ],
                   ),
-                  GradientText(text: 'GAME', size: 31.6),
+                  GradientText('GAME', 31.6),
                 ],
               ),
             ),
             const Padding(padding: EdgeInsets.only(top: 50)),
             Image.asset('images/iCodeGuy.png'),
-            const Expanded(child: GradientText(text: 'READY?', size: 25))
+            const Expanded(child: GradientText('READY?', 25))
           ],
         ),
       ),

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class InputField extends StatefulWidget {
-  const InputField({super.key, required this.onSubmitted});
-
   final void Function(String) onSubmitted;
 
+  const InputField({super.key, required this.onSubmitted});
+
   @override
-  State<InputField> createState() => _InputFieldState();
+  InputFieldState createState() => InputFieldState();
 }
 
-class _InputFieldState extends State<InputField> {
+class InputFieldState extends State<InputField> {
   late TextEditingController _textEditingController;
 
   @override
@@ -32,38 +32,38 @@ class _InputFieldState extends State<InputField> {
       child: TextField(
         onSubmitted: (String value) {
           widget.onSubmitted(value);
+          // _textEditingController.clear();
         },
         controller: _textEditingController,
         maxLines: 1,
         style: const TextStyle(
-          color: Color(0xFFE86B02),
-          fontSize: 18,
-          fontFamily: 'Nunito',
-          fontWeight: FontWeight.w600,
-        ),
+            color: Color(0xFFE86B02),
+            fontSize: 18,
+            fontFamily: 'Nunito',
+            fontWeight: FontWeight.w600),
         decoration: InputDecoration(
-            contentPadding:
-                const EdgeInsets.symmetric(vertical: 12, horizontal: 25),
-            filled: true,
-            fillColor: Colors.white,
-            prefixIcon: const Icon(
-              Icons.person,
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 25, vertical: 12),
+          filled: true,
+          fillColor: Colors.white,
+          prefixIcon: const Icon(
+            Icons.person,
+            color: Color(0xFFE86B02),
+          ),
+          hintText: 'Your Name',
+          hintStyle: const TextStyle(color: Color(0xFFE86B02)),
+          suffixIcon: IconButton(
+            onPressed: _textEditingController.clear,
+            icon: const Icon(
+              Icons.clear,
               color: Color(0xFFE86B02),
             ),
-            hintText: 'Your name',
-            hintStyle: const TextStyle(
-              color: Color(0xFFE86B02),
-            ),
-            suffixIcon: IconButton(
-                onPressed: _textEditingController.clear,
-                icon: const Icon(
-                  Icons.clear,
-                  color: Color(0xFFE86B02),
-                )),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(25),
-              borderSide: const BorderSide(width: 0, style: BorderStyle.none),
-            )),
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(25),
+            borderSide: const BorderSide(width: 0, style: BorderStyle.none),
+          ),
+        ),
       ),
     );
   }

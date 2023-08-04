@@ -9,7 +9,11 @@ class TaskModel {
   List<CharModel> puzzles = [];
   List<String> arrayButton = [];
 
-  TaskModel({required this.pathImage, required this.question, required this.answer, this.arrayButton = const []});
+  TaskModel(
+      {required this.pathImage,
+      required this.question,
+      required this.answer,
+      this.arrayButton = const []});
 
   void setWordFindChar(List<CharModel> puzzles) {
     this.puzzles = puzzles;
@@ -26,14 +30,13 @@ class TaskModel {
       return complete;
     }
     isFull = true;
-    String answeredString = puzzles.map((puzzle) => puzzle.currentValue).join("");
-    if (answeredString == answer) {
-      return answeredString;
-    }
-    return false;
+    String answeredString =
+        puzzles.map((puzzle) => puzzle.currentValue).join("");
+
+    return answeredString == answer;
   }
 
-  TaskModel clone(){
+  TaskModel clone() {
     return TaskModel(answer: answer, pathImage: pathImage, question: question);
   }
 }

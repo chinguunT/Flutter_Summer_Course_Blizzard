@@ -1,12 +1,12 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:wordfind_app/gradient_text.dart';
-import 'package:wordfind_app/input_field.dart';
-import 'package:wordfind_app/welcome_page.dart';
+import 'package:wordfind_app/guess_page.dart';
 
 import 'Models/user_model.dart';
-import 'guess_page.dart';
+import 'gradient_text.dart';
+import 'input_field.dart';
 
-User newUser = User('guest', 0);
+User newUser = User('Guest', 0);
 
 class StartPage extends StatefulWidget {
   const StartPage({super.key});
@@ -20,56 +20,48 @@ class _StartPageState extends State<StartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFFBF5F2),
+      appBar: AppBar(
+        leading: IconButton(
+            icon: Image.asset('images/arrow_back.png'),
+            onPressed: () {
+              Navigator.of(context).pop();
+              newUser = User('Guest', 0);
+            }),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
+        title: SizedBox(
+          height: 50.0,
+          child: Image.asset('images/game_logo.png'),
+        ),
+      ),
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('images/back2.png'), fit: BoxFit.cover),
+            image: AssetImage("images/back2.png"),
+            fit: BoxFit.cover,
+          ),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: 200,
-              width: 500,
-              child: Image.asset('images/iCodeGuyHead.png'),
-            ),
-            const SizedBox(
-                height: 50,
-                width: 500,
-                child: Center(
-                  child: GradientText(text: 'Player name', size: 20),
-                )),
-            SizedBox(
-                height: 50,
-                width: 500,
-                child: Center(
-                  child: InputField(
-                    onSubmitted: _createUser,
-                  ),
-                )),
-          ],
+        child: Center(
+          child: Column(
+            children: [
+              const Padding(padding: EdgeInsets.only(top: 50)),
+              Image.asset(
+                'images/iCodeGuyHead.png',
+                // width: 300,
+              ),
+              const Padding(padding: EdgeInsets.only(top: 20)),
+              const GradientText('Player name', 20.0),
+              const Padding(padding: EdgeInsets.only(top: 20)),
+              InputField(onSubmitted: _createUser),
+            ],
+          ),
         ),
       ),
-      floatingActionButton: StartButton(newUser),
+      floatingActionButton: StartButton(
+        newUser,
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          title: Padding(
-            padding: const EdgeInsets.only(left: 75),
-            child: Image.asset('images/game_logo.png'),
-          ),
-          leading: IconButton(
-            icon: Image.asset(
-              'images/arrow_back.png',
-              width: 32,
-              height: 32,
-            ),
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const WelcomePage()));
-            },
-          )),
     );
   }
 
@@ -77,16 +69,58 @@ class _StartPageState extends State<StartPage> {
     setState(() {
       newUser.userName = userName;
     });
+    if (kDebugMode) {
+      print('Creating user: ${newUser.userName}');
+      print('User score: ${newUser.score}');
+    }
   }
 }
 
-class StartButton extends StatefulWidget {
+class StartButton extends StatelessWidget {
   const StartButton(User newUser, {super.key});
-  @override
-  State<StartButton> createState() => _StartButtonState();
-}
 
-class _StartButtonState extends State<StartButton> {
+  // @override
+  // Widget build(BuildContext context) {
+  //   if (newUser.userName == 'Guest') {
+  //     return Container();
+  //   } else {
+  //     return Container(
+  //       width: 310,
+  //       height: 60,
+  //       decoration: BoxDecoration(
+  //         gradient: const LinearGradient(
+  //             begin: Alignment.centerLeft,
+  //             end: Alignment.centerRight,
+  //             colors: [
+  //               Color(0xFFE86B02),
+  //               Color(0xFFFA9541),
+  //             ]),
+  //         borderRadius: BorderRadius.circular(25),
+  //       ),
+  //       child: ElevatedButton(
+  //         onPressed: () {
+  //           Navigator.push(
+  //             context,
+  //             MaterialPageRoute(builder: (context) => TaskPage(newUser)),
+  //           );
+  //         },
+  //         style: ElevatedButton.styleFrom(
+  //             backgroundColor: Colors.transparent,
+  //             elevation: 0,
+  //             shape: RoundedRectangleBorder(
+  //                 borderRadius: BorderRadius.circular(25))),
+  //         child: const Text(
+  //           'START',
+  //           style: TextStyle(
+  //               fontFamily: 'Nunito',
+  //               fontSize: 24,
+  //               fontWeight: FontWeight.w700),
+  //         ),
+  //       ),
+  //     );
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -105,7 +139,7 @@ class _StartButtonState extends State<StartButton> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => GuessPage(
+                  builder: (context) => TaskPage(
                         newUser,
                       )));
         },

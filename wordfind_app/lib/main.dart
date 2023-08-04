@@ -4,6 +4,7 @@ import 'package:wordfind_app/welcome_page.dart';
 void main() {
   runApp(MaterialApp(
     title: 'Word Find Game',
+    debugShowCheckedModeBanner: false,
     theme: ThemeData(fontFamily: 'Ribeye'),
     home: const Scaffold(
       body: Center(
