@@ -6,25 +6,44 @@ class AuthMethod {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   Future<String> signUpUser(
-      {required String phoneNumber,
+      {required String email,
       required String userName,
       required String password}) async {
-    String result = 'Some error occured';
+    String result = 'Some error occurred';
     try {
-      if (phoneNumber.isNotEmpty || userName.isNotEmpty || password.isNotEmpty){
-        UserCredential userCredential = await _auth.createUserWithEmailAndPassword(email: phoneNumber, password: password);
+      if (email.isNotEmpty || userName.isNotEmpty || password.isNotEmpty){
+        UserCredential userCredential = await _auth.createUserWithEmailAndPassword(email: email, password: password);
         _firestore.collection('users').doc(userCredential.user!.uid).set({
           'username': userName,
           'uid': userCredential.user!.uid,
-          'email': phoneNumber,
+          'email': email,
           'following': [],
           'followers': []
         });
 
-        result = 'succes';
+        result = 'successfully signed up!';
+      } else {
+        result = 'Please enter all the fields';
       }
     } catch (err) {
       result = err.toString();
+    }
+
+    return result;
+  }
+
+  Future<String> loginUser({required String email, required String password}) async {
+    String result = 'f';
+    try {
+      if (email.isNotEmpty || password.isNotEmpty){
+        await _auth.signInWithEmailAndPassword(email: email, password: password);
+
+        result = 's';
+      } else {
+        result = 'c';
+      }
+    } catch (error) {
+      result = error.toString();
     }
 
     return result;
