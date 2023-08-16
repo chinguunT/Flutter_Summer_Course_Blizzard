@@ -25,7 +25,8 @@ class _LoginScreenState extends State<LoginScreen> {
     if (result == 's') {
       setState(() {
         _isloading = false;
-        Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const HomeScreen()));
       });
 
       if (kDebugMode) {
@@ -84,9 +85,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         borderRadius: BorderRadius.all(Radius.circular(4)),
                       ),
                       color: Colors.blue),
-                  child: const Center(
-                    child: Text('Login'),
-                  ),
+                  child: _isloading
+                      ? const Center(
+                          child: CircularProgressIndicator(
+                          color: Colors.white,
+                        ))
+                      : const Text('Login'),
                 ),
               ),
               const SizedBox(
