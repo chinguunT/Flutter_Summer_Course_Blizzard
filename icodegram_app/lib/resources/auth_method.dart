@@ -21,7 +21,7 @@ class AuthMethod {
           'followers': []
         });
 
-        result = 'successfully signed up!';
+        result = 'success';
       } else {
         result = 'Please enter all the fields';
       }

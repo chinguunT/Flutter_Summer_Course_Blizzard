@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:icodegram_app/pages/login.dart';
 
 import '../component/text_field.dart';
 import '../resources/auth_method.dart';
@@ -26,6 +26,21 @@ class _SignUpState extends State<SignUp> {
     _rePasswordController.dispose();
   }
 
+  void _signUp() async {
+    String result = await AuthMethod().signUpUser(
+        email: _emailController.text,
+        userName: _userController.text,
+        password: _passwordController.text);
+    if (result == 'success') {
+      print('success');
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const LoginScreen()));
+    } else {
+      print('not success');
+    }
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +57,7 @@ class _SignUpState extends State<SignUp> {
                 ),
                 const Text(
                   'iCodegram',
-                  style: TextStyle(fontSize: 34),
+                  style: TextStyle(fontSize: 40, fontFamily: 'Lobster'),
                 ),
                 const SizedBox(
                   height: 64,
@@ -83,14 +98,8 @@ class _SignUpState extends State<SignUp> {
                 const SizedBox(
                   height: 24,
                 ),
-                Flexible(
-                  flex: 2,
-                  child: Container(),
-                ),
                 InkWell(
-                  onTap: () {
-                    AuthMethod().signUpUser(email: _emailController.text, userName: _userController.text, password: _passwordController.text);
-                  },
+                  onTap: () {_signUp();},
                   child: Container(
                     width: double.infinity,
                     alignment: Alignment.center,
@@ -103,6 +112,40 @@ class _SignUpState extends State<SignUp> {
                     child: const Text('Бүртгүүлэх'),
                   ),
                 ),
+                const SizedBox(
+                  height: 12,
+                ),
+                const Center(
+                  child: Text(
+                    'Эсвэл',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+                const SizedBox(
+                  height: 12,
+                ),
+                Center(
+                    child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('Бүртгэлтэй юу?   ',
+                        style: TextStyle(fontSize: 15, fontFamily: 'Rubik')),
+                    InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const LoginScreen()));
+                        },
+                        child: const Text(
+                          'Нэвтрэх',
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontFamily: 'Rubik',
+                              color: Colors.deepOrange),
+                        ))
+                  ],
+                )),
                 const SizedBox(
                   height: 12,
                 ),

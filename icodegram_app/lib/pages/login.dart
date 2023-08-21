@@ -1,9 +1,11 @@
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:icodegram_app/pages/sign_up.dart';
 
 import '../component/text_field.dart';
 import '../resources/auth_method.dart';
+import 'home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -25,17 +27,14 @@ class _LoginScreenState extends State<LoginScreen> {
         email: _emailController.text, password: _passwordController.text);
     if (result == 's') {
       setState(() {
-        //   _isloading = false;
-        //   Navigator.push(context,
-        //       MaterialPageRoute(builder: (context) => const HomeScreen()));
+        _isLoading = false;
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const HomeScreen()));
       });
-      if (kDebugMode) {
-        print('Successfully logged in');
-      }
     } else {
-      if (kDebugMode) {
-        print('not Succesful');
-      }
+      setState(() {
+        _isLoading = false;
+      });
     }
   }
 
@@ -71,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   textEditingController: _passwordController,
                   textInputType: TextInputType.text),
               const SizedBox(
-                height: 64,
+                height: 24,
               ),
               InkWell(
                 onTap: () {
@@ -95,8 +94,26 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(
-                height: 12,
+                height: 24,
               ),
+              const Center(
+                child: Text('Эсвэл', style: TextStyle(fontSize: 20),),
+              ),
+              const SizedBox(
+                height: 24,
+              ),
+              Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text('Шинэ хэрэглэгч үү? ', style: TextStyle(fontSize: 15, fontFamily: 'Rubik')),
+                      InkWell(onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUp()));
+                      }, child: const Text('Бүртгүүлэх', style: TextStyle(fontSize: 15, fontFamily: 'Rubik', color: Colors.deepOrange),))
+                    ],
+                  )
+              ),
+
               Flexible(flex: 2, child: Container()),
 
             ],
