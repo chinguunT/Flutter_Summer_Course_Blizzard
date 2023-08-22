@@ -60,7 +60,7 @@ class _SignUpState extends State<SignUp> {
                   style: TextStyle(fontSize: 40, fontFamily: 'Lobster'),
                 ),
                 const SizedBox(
-                  height: 64,
+                  height: 40,
                 ),
                 TextFieldInput(
                   hintText: 'Email',
