@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:icodegram_app/pages/login.dart';
+import 'package:icodegram_app/userControl/login.dart';
 
 import '../component/text_field.dart';
 import '../resources/auth_method.dart';
@@ -108,7 +108,7 @@ class _SignUpState extends State<SignUp> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(4)),
                         ),
-                        color: Colors.blue),
+                        color: Colors.deepOrange),
                     child: const Text('Бүртгүүлэх'),
                   ),
                 ),

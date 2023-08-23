@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:icodegram_app/pages/home_screen.dart';
-import 'add_post.dart';
-import 'my_profile.dart';
+import 'package:icodegram_app/screens/home_screen.dart';
+import '../screens/add_post.dart';
+import '../screens/my_profile.dart';
 
 class ScreenLayout extends StatefulWidget {
   const ScreenLayout({super.key});
@@ -37,9 +37,9 @@ class _ScreenLayoutState extends State<ScreenLayout> {
           physics: const NeverScrollableScrollPhysics(),
           controller: pageController,
           onPageChanged: onPageChanged,
-          children: const [
-            HomeScreen(),
-            AddPostScreen(),
+          children: [
+            const HomeScreen(),
+            const AddPostScreen(),
             ProfileScreen(),
           ],
         ),
@@ -47,22 +47,23 @@ class _ScreenLayoutState extends State<ScreenLayout> {
       bottomNavigationBar: CupertinoTabBar(
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home, color: _page == 0 ? Colors.blue : Colors.black,),
+            icon: Icon(Icons.home, color: _page == 0 ? Colors.deepOrange : Colors.white,),
             label: '',
             backgroundColor: Colors.white
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.add_box_outlined, color: _page == 1 ? Colors.blue : Colors.black,),
+              icon: Icon(Icons.add_box_outlined, color: _page == 1 ? Colors.deepOrange : Colors.white,),
               label: '',
               backgroundColor: Colors.white
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.home, color: _page == 2 ? Colors.blue : Colors.black,),
+              icon: Icon(Icons.person_outlined, color: _page == 2 ? Colors.deepOrange : Colors.white,),
               label: '',
               backgroundColor: Colors.white
           ),
         ],
         onTap: navigationTapped,
+        backgroundColor: Colors.black,
       ),
     );
   }
@@ -72,6 +73,8 @@ class _ScreenLayoutState extends State<ScreenLayout> {
   }
 
   onPageChanged(int page){
-    _page = page;
+    setState(() {
+      _page = page;
+    });
   }
 }

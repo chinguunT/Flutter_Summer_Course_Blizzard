@@ -1,11 +1,10 @@
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:icodegram_app/pages/sign_up.dart';
+import 'package:icodegram_app/pages/screen_layout.dart';
+import 'package:icodegram_app/userControl/sign_up.dart';
 
 import '../component/text_field.dart';
 import '../resources/auth_method.dart';
-import 'home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -29,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
       setState(() {
         _isLoading = false;
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const HomeScreen()));
+            MaterialPageRoute(builder: (context) => const ScreenLayout()));
       });
     } else {
       setState(() {
@@ -84,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(4)),
                       ),
-                      color: Colors.blue),
+                      color: Colors.deepOrange),
                   child: _isLoading
                       ? const Center(
                       child: CircularProgressIndicator(
