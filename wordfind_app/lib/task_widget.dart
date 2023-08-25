@@ -29,6 +29,10 @@ class TaskWidgetState extends State<TaskWidget> {
     generatePuzzle();
   }
 
+  reload(){
+
+  }
+
   @override
   Widget build(BuildContext context) {
     TaskModel currentQues = listQuestions[indexQues];
@@ -45,7 +49,7 @@ class TaskWidgetState extends State<TaskWidget> {
                 InkWell(
                   onTap: () => generateHint(),
                   child: const Icon(
-                    Icons.healing_outlined,
+                    Icons.lightbulb,
                     size: 45,
                     color: Color(0xFFE86B02),
                   ),

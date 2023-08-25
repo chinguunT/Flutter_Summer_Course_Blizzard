@@ -31,8 +31,8 @@ class TextFieldInput extends StatelessWidget {
         filled: true,
         contentPadding: const EdgeInsets.all(8),
       ),
-      keyboardType: this.textInputType,
-      obscureText: this.obsecureText,
+      keyboardType: textInputType,
+      obscureText: obsecureText,
     );
   }
 }

@@ -1,5 +1,8 @@
 import 'package:day20/resources/auth_method.dart';
+import 'package:day20/utils/utils.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../component/text_field.dart';
 
@@ -15,6 +18,7 @@ class _SignUpState extends State<SignUp> {
   final TextEditingController _userController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _rePasswordController = TextEditingController();
+  Uint8List? _image;
 
   @override
   void dispose() {
@@ -23,6 +27,13 @@ class _SignUpState extends State<SignUp> {
     _userController.dispose();
     _passwordController.dispose();
     _rePasswordController.dispose();
+  }
+
+  selectImage() async {
+    Uint8List image = await pickImage(ImageSource.gallery);
+    setState(() {
+      _image = image;
+    });
   }
 
   @override
@@ -42,6 +53,27 @@ class _SignUpState extends State<SignUp> {
                 const Text(
                   'iCodegram',
                   style: TextStyle(fontSize: 34),
+                ),
+                Stack(
+                  children: [
+                    _image != null
+                        ? CircleAvatar(
+                            radius: 64,
+                            backgroundImage: MemoryImage(_image!),
+                          )
+                        : const CircleAvatar(
+                            radius: 64,
+                            backgroundImage: NetworkImage(
+                                'https://toppng.com/uploads/preview/instagram-default-profile-picture-11562973083brycehrmyv.png'),
+                          ),
+                    Positioned(
+                      bottom: -10,
+                      left: 80,
+                      child: IconButton(onPressed: () {
+                        selectImage();
+                      }, icon: const Icon(Icons.add_a_photo)),
+                    ),
+                  ],
                 ),
                 const SizedBox(
                   height: 64,
@@ -88,7 +120,11 @@ class _SignUpState extends State<SignUp> {
                 ),
                 InkWell(
                   onTap: () {
-                    AuthMethod().signUpUser(email: _emailController.text, userName: _userController.text, password: _passwordController.text);
+                    AuthMethod().signUpUser(
+                        email: _emailController.text,
+                        userName: _userController.text,
+                        password: _passwordController.text,
+                        file: null);
                   },
                   child: Container(
                     width: double.infinity,

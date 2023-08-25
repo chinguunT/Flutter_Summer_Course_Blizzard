@@ -12,6 +12,6 @@ void main(){
       scaffoldBackgroundColor: const Color.fromRGBO(0, 0, 0, 1),
       textTheme: Typography().white.apply(fontFamily: 'Rubik')
     ),
-    home: const ScreenLayout(),
+    home: const SignUp(),
   ));
 }
